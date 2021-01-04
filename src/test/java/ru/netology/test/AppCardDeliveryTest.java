@@ -40,7 +40,7 @@ public class AppCardDeliveryTest {
         element(".checkbox__box").click();
         element(".button__text").click();
         element(".notification__content").
-                waitUntil(Condition.visible,10000).shouldHave(Condition.text(dayDeliveryCard.format(formatter)));
+                waitUntil(Condition.visible, 10000).shouldHave(Condition.text(dayDeliveryCard.format(formatter)));
         element("[data-test-id=date] [placeholder=\"Дата встречи\"]").
                 sendKeys(Keys.chord(Keys.SHIFT, Keys.HOME), Keys.BACK_SPACE, dayDeliveryCardPlusSevenDays.format(formatter));
         element(".button__text").click();
@@ -48,7 +48,6 @@ public class AppCardDeliveryTest {
         element(".notification__content").waitUntil(Condition.visible, 10000).
                 shouldHave(Condition.text(dayDeliveryCardPlusSevenDays.format(formatter)));
     }
-
 
 
 }

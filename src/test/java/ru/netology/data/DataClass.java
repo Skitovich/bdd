@@ -8,7 +8,17 @@ import java.util.Locale;
 
 
 public class DataClass {
-    private DataClass() { }
+    private DataClass() {
+    }
+
+    public static AuthInfo getFakerInfo(String locale) {
+        Faker faker = new Faker(new Locale(locale));
+        return new AuthInfo(faker.address().cityName().replace("Сочи", "Краснодар"),
+                faker.phoneNumber().phoneNumber(),
+                faker.name().firstName().replace("ё", "е"),
+                faker.name().lastName().replace("ё", "е"));
+    }
+
     @Data
     @Value
     public static class AuthInfo {
@@ -16,13 +26,5 @@ public class DataClass {
         String telephone;
         String name;
         String surName;
-    }
-
-    public static AuthInfo getFakerInfo(String locale) {
-        Faker faker = new Faker(new Locale(locale));
-        return new AuthInfo(faker.address().cityName().replace("Сочи","Краснодар"),
-                faker.phoneNumber().phoneNumber(),
-                faker.name().firstName().replace("ё","е"),
-                faker.name().lastName().replace("ё","е"));
     }
 }
