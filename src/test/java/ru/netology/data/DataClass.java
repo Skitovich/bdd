@@ -1,37 +1,28 @@
 package ru.netology.data;
 
-
 import com.github.javafaker.Faker;
+import lombok.Data;
 import lombok.Value;
 
 import java.util.Locale;
 
+
 public class DataClass {
     private DataClass() { }
-
+    @Data
     @Value
     public static class AuthInfo {
-        private final String city;
-        private final String telephone;
-        private final String name;
-        private final String surName;
+        String city;
+        String telephone;
+        String name;
+        String surName;
     }
 
-    public static AuthInfo getFakerInfo() {
-        Faker faker = new Faker(new Locale("ru"));
-        return new AuthInfo(faker.address().cityName(),faker.phoneNumber().phoneNumber(),faker.name().firstName(),faker.name().lastName());
+    public static AuthInfo getFakerInfo(String locale) {
+        Faker faker = new Faker(new Locale(locale));
+        return new AuthInfo(faker.address().cityName().replace("Сочи","Краснодар"),
+                faker.phoneNumber().phoneNumber(),
+                faker.name().firstName().replace("ё","е"),
+                faker.name().lastName().replace("ё","е"));
     }
-
-//    public static AuthInfo getOtherAuthInfo(AuthInfo original) {
-//        return new AuthInfo("petya", "123qwerty");
-//    }
-
-//    @Value
-//    public static class VerificationCode {
-//        private String code;
-//    }
-//
-//    public static VerificationCode getVerificationCodeFor(AuthInfo authInfo) {
-//        return new VerificationCode("12345");
-//    }
 }
