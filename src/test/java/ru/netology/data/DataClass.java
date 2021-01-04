@@ -13,7 +13,7 @@ public class DataClass {
 
     public static AuthInfo getFakerInfo(String locale) {
         Faker faker = new Faker(new Locale(locale));
-        return new AuthInfo(faker.address().cityName().replace("Сочи", "Краснодар"),
+        return new AuthInfo(faker.address().cityName().replace("Сочи", "Краснодар").replace("Магнитогорск","Краснодар"),
                 faker.phoneNumber().phoneNumber(),
                 faker.name().firstName().replace("ё", "е"),
                 faker.name().lastName().replace("ё", "е"));
