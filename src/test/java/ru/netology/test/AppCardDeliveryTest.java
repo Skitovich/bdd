@@ -15,8 +15,6 @@ import static ru.netology.data.DataGenerator.generateDate;
 public class AppCardDeliveryTest {
 
 
-
-
     @BeforeAll
     static void setUp() {
         Configuration.browser = "firefox";
